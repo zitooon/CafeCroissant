@@ -1,0 +1,86 @@
+<% if session[:admin] %>
+	
+	<h3>"Quien somos" presentation</h3>
+
+	<br />
+	<table style="width:100%">
+	<tr>
+    <th>Picture</th>
+	<th>Title</th>
+	<th>Created at</th>
+    <th>Updated at</th>
+	</tr>
+	
+	<% for comment in @comments %>
+		<%if comment.is_service == 0%>
+		<tr>
+    <td align="center"><%= image_tag("services/#{comment.picture}", :border => 0, :style => "width:50px;height:50px")%></td>
+	<td><%=h comment.title %></td>
+		<td><%=h comment.created_at.to_s(:short) %></td>
+    <td><%=h comment.updated_at.to_s(:short) %></td>
+		<td><%= link_to 'Show', comment %></td>
+    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+  </tr>
+	<%end%>
+	<% end %>
+		</table>
+		<br />
+			
+<h3>Listing services</h3>
+
+	<br />
+<table style="width:100%">
+  <tr>
+    <th>Picture</th>
+	<th>Title</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+  </tr>
+
+<% for comment in @comments %>
+	<%if comment.is_service == 1%>
+	<tr>
+    <td align="center"><%= image_tag("services/#{comment.picture}", :border => 0, :style => "width:50px;height:50px")%></td>
+	<td><%=h comment.title %></td>
+    <td><%=h comment.created_at.to_s(:short) %></td>
+    <td><%=h comment.updated_at.to_s(:short) %></td>
+    <td><%= link_to 'Show', comment %></td>
+    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+    <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+	<%end%>
+	<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Create a new service', new_comment_path %>
+
+<% else %>
+	<%if params[:h] == 'q'%>
+		<% type = 0%>
+	<%else%>
+		<% type = 1%>
+	<%end%>
+	
+<% for comment in @comments %>
+	<%if comment.is_service == type%> 
+<p>
+<%= image_tag("services/#{comment.picture}", :border => 0)%>
+</p>
+
+<p>
+<b>Title:</b>
+<%=h comment.title %>
+</p>
+
+<p>
+<b>Body:</b>
+<%= comment.body %>
+</p>
+
+<%end%>
+
+<%end%>
+
+<%end%>

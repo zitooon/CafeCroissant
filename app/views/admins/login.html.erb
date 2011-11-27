@@ -1,0 +1,13 @@
+<h3>Login webmin</h3>
+<br />
+
+<% form_tag :action => 'login' do %>
+  <%= error_messages_for 'login' %>
+  
+	<p><label for="admin">Name</label><br/>
+	<%= text_field 'admin', 'name'  %></p>
+
+	<p><label for="admin">Password</label><br/>
+	<%= password_field 'admin', 'password'  %></p>
+  <%= submit_tag "Login" %>
+<% end %>

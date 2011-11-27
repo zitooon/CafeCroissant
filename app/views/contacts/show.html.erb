@@ -1,0 +1,70 @@
+<h3>Contact details</h3>
+<br/>
+<p>
+  <b>Firstname:</b>
+  <%=h @contact.firstname %>
+</p>
+
+<p>
+  <b>Lastname:</b>
+  <%=h @contact.lastname %>
+</p>
+
+<p>
+  <b>Function:</b>
+  <%=h @contact.function %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @contact.email %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @contact.address %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%=h @contact.zip %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @contact.city %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%=h @contact.country %>
+</p>
+
+<p>
+  <b>Phone1:</b>
+  <%=h @contact.phone1 %>
+</p>
+
+<p>
+  <b>Phone2:</b>
+  <%=h @contact.phone2 %>
+</p>
+
+<p valign="top">
+<b>Picture:</b>
+<%= image_tag("contacts/#{@contact.picture}", :border=>0, :style =>"vertical-align: top")%>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%=h @contact.created_at.to_s(:short) %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%=h @contact.updated_at.to_s(:short) %>
+</p>
+
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

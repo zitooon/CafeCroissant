@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Products: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+</head>
+<body>
+
+<table width="800px" align="center">
+<tr>
+<td>
+<% if session[:admin] %>
+	<br/>
+<p align="right"><%= link_to 'Logout webmin', {:controller => 'admins', :action => 'logout'}, :method => :post %></p>
+<% else %>
+	<br />
+<p style="color: green"><%= flash[:notice] %></p>
+<h2><%= link_to 'quien somos', :controller => 'comments', :h => 'q' %>&nbsp;
+<%= image_tag("cafecroissants/cup.jpg", :border=>0)%>&nbsp;
+<%= link_to 'nuestros productos', :controller => 'products' %>&nbsp;
+<%= image_tag("cafecroissants/cup.jpg", :border=>0)%>&nbsp;
+<%= link_to 'servicios', :controller => 'comments', :h => 's' %>&nbsp;
+<%= image_tag("cafecroissants/cup.jpg", :border=>0)%>&nbsp;
+	<%= link_to 'contactos', :controller => 'contacts' %></h2>
+	
+	<% end %>

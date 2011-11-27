@@ -1,0 +1,25 @@
+<h3>Admin details</h3>
+<br/>
+<p>
+  <b>Name:</b>
+  <%=h @admin.name %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%=h @admin.password %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%=h @admin.created_at.to_s(:short) %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%=h @admin.updated_at.to_s(:short) %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_path(@admin) %> |
+<%= link_to 'Back', {:action => 'list'}, :method => :post %>

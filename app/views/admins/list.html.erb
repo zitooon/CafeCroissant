@@ -1,0 +1,29 @@
+<h3>Listing admins</h3>
+
+<br />
+
+<table style="width:100%">
+  <tr>
+<th>Name</th>
+    <th>Password</th>
+<th>Created at</th>
+    <th>Updated at</th>
+</tr>
+
+<% for admin in @admins %>
+	<tr>
+    <td><%=h admin.name %></td>
+    <td><%=h admin.password %></td>
+    <td><%=h admin.created_at.to_s(:short) %></td>
+    <td><%=h admin.updated_at.to_s(:short) %></td>
+    <td><%= link_to 'Show', admin %></td>
+    <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
+    <td><%= link_to 'Destroy', admin, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+	<% end %>
+</table>
+
+<br/>
+
+<%= link_to 'Create a new admin', new_admin_path %>
+

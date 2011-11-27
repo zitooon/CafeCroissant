@@ -1,0 +1,25 @@
+<h3>Listing customers</h3>
+<br />
+<table style='width:100%'>
+
+  <tr>
+      <th>Email</th>
+	  <th>Created at</th>
+    <th>Updated at</th>
+  </tr>
+
+<% for customer in @customers %>
+  <tr>
+     <td><%=h customer.email %></td>
+   <td><%=h customer.created_at.to_s(:short) %></td>
+    <td><%=h customer.updated_at.to_s(:short) %></td>
+    <td><%= link_to 'Show', customer %></td>
+    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+    <td><%= link_to 'Destroy', customer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Create a new customer', new_customer_path %>

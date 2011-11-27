@@ -1,0 +1,67 @@
+<% if session[:admin] %>
+<h3>Listing contacts</h3>
+<br />
+<table style="width:100%">
+  <tr>
+    <th>Picture</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Created at</th>
+  </tr>
+
+<% for contact in @contacts %>
+  <tr>
+    <td align="center"><%= image_tag("contacts/#{contact.picture}", :border => 0, :style => "width:50px;height:50px")%></td>
+	<td><%=h contact.firstname %></td>
+    <td><%=h contact.lastname %></td>
+    <td><%=h contact.created_at.to_s(:short) %></td>
+    <td><%= link_to 'Show', contact %></td>
+    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+    <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '&nbsp;Create a new contact', new_contact_path %>
+
+<% else %>
+
+<% for contact in @contacts %>
+	<p>
+	<%= image_tag("contacts/#{contact.picture}", :border=>0, :style =>"vertical-align: top")%>
+		</p>
+	
+<p>
+<%=h contact.firstname %> <%=h contact.lastname %>
+</p>
+
+<p>
+<%=h contact.function %>
+</p>
+
+<p>
+<%=h contact.email %>
+</p>
+
+<p>
+<%= contact.address %>
+</p>
+
+<p>
+<%=h contact.zip %>, <%=h contact.city %>, <%=h contact.country %>
+</p>
+
+<p>
+<%=h contact.phone1 %>
+</p>
+
+<p>
+<%=h contact.phone2 %>
+</p>
+
+
+<% end %>
+
+<% end %>

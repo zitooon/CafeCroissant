@@ -1,0 +1,58 @@
+<% if session[:admin] %>
+	
+<h3>Listing products</h3>
+<br />
+<table style='width:100%'>
+	  <tr>
+		<th>Picture</th>
+		<th>Title</th>
+		<th>Price</th>
+		<th>Created at</th>
+	  </tr>
+
+	<% for product in @products %>
+	  <tr>
+		<td align="center"><%= image_tag("products/#{product.picture}", :border => 0, :style => "width:50px;height:50px")%></td>
+		<td><%=h product.title %></td>
+		<td><%=h product.price %></td>
+		<td><%=h product.created_at.to_s(:short) %></td>
+		<td><%= link_to 'Show', product %></td>
+		<td><%= link_to 'Edit', edit_product_path(product) %></td>
+		<td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+
+	<br />
+
+	<%= link_to '&nbsp;Create a new product', new_product_path %>
+	
+	
+<% else %>
+	<% @i = 0 %>
+		<table style="width:100%">
+		<% for product in @products %>
+		<tr>
+		<% if @i == 0 %>
+			<td valign='top' width='230px'>
+				<%= image_tag("products/#{product.picture}", :border=>0, :style =>"vertical-align: top")%>
+			</td>
+			<td valign="top">
+				<b><%=h product.title %></b>
+				<br/>
+				<br/>
+				<%= product.description %>
+				<br/>
+				<br />
+				<small>Precio: <%=h product.price %> &euro; HT</small>
+			</td>
+			<tr><td>&nbsp;</td></tr>
+			<% end %>
+			<td align='center' width='230px'>
+				<u><%= link_to product.title, product %></u>
+			</td><td></td>
+		</tr>
+		<% @i += 1 %>
+	<% end %>
+	</table>	
+<% end %>

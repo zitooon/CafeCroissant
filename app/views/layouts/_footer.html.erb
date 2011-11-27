@@ -1,0 +1,24 @@
+<p align="right">
+<% if session[:admin] %>
+	<% if controller.controller_name == "admins" %> 
+		<%if controller.action_name != "index"%>
+			<%= link_to 'Back to Webmin index', :controller => 'admins' %>
+		<%else%>
+			<%= link_to 'Logout webmin', {:controller => 'admins', :action => 'logout'}, :method => :post %>
+		<%end%>
+	<%else%>
+		<%= link_to 'Back to Webmin index', :controller => 'admins' %>
+	<%end%>
+	<% else %>
+	<%= link_to 'subscribe', {:controller => 'customers', :action => 'new'} %> |
+	<%= link_to 'informaciones legales', {:controller => 'infos'} %> |
+	<%= link_to 'condiciones generales de venta', :controller => 'conditions' %> |
+	<%= link_to 'plano del sitio', :controller => 'sitemap' %> |
+	<%= link_to 'admin', :controller => 'admins' %>
+	<% end %>
+</p>
+</td>
+</tr>
+</table>
+</body>
+</html>

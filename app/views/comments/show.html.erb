@@ -1,0 +1,36 @@
+<%if @comment.is_service == 1
+	@h3_name = "Service"
+else
+	@h3_name = "\"Quien somos\""
+end%>
+
+<h3><%= @h3_name%> details</h3>
+<br/>
+<p>
+  <b>Title:</b>
+  <%=h @comment.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @comment.body %>
+</p>
+
+<p valign="top">
+<b>Picture:</b>
+<%= image_tag("services/#{@comment.picture}", :border=>0, :style =>"vertical-align: top")%>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%=h @comment.created_at.to_s(:short) %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%=h @comment.updated_at.to_s(:short) %>
+</p>
+
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>
